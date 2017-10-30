@@ -60,10 +60,10 @@ var DateRangeAccessor = (function (_super) {
         if (this.state.hasValue()) {
             var val = this.state.getValue();
             var fromDateRangeFilter = this.fieldContext.wrapFilter(DateRangeQuery_1.DateRangeQuery(this.options.fromDateField, {
-                lte: +val.toDate
+                lte: moment(val.toDate).unix()
             }));
             var toDateRangeFilter = this.fieldContext.wrapFilter(DateRangeQuery_1.DateRangeQuery(this.options.toDateField, {
-                gte: +val.fromDate
+                gte: moment(val.fromDate).unix()
             }));
             var fromVal = this.rangeFormatter(val.fromDate);
             var toVal = this.rangeFormatter(val.toDate);
