@@ -125,12 +125,12 @@ export class DateRangeAccessor extends FilterBasedAccessor<ObjectState> {
         otherFilters,
         this.fieldContext.wrapFilter(
           DateRangeQuery(this.options.fromDateField, {
-            lte: +val.toDate
+            lte: moment(val.toDate).unix()
           })
         ),
         this.fieldContext.wrapFilter(
           DateRangeQuery(this.options.toDateField, {
-            gte: +val.fromDate
+            gte: moment(val.fromDate).unix()
           })
         )
       ])

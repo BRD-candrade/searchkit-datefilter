@@ -101,10 +101,10 @@ var DateRangeAccessor = (function (_super) {
             var filters = searchkit_1.BoolMust([
                 otherFilters,
                 this.fieldContext.wrapFilter(DateRangeQuery_1.DateRangeQuery(this.options.fromDateField, {
-                    lte: +val.toDate
+                    lte: moment(val.toDate).unix()
                 })),
                 this.fieldContext.wrapFilter(DateRangeQuery_1.DateRangeQuery(this.options.toDateField, {
-                    gte: +val.fromDate
+                    gte: moment(val.fromDate).unix()
                 }))
             ]);
             query = query.setAggs(searchkit_1.FilterBucket(this.key, filters));
