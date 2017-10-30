@@ -79,10 +79,10 @@ export class DateRangeAccessor extends FilterBasedAccessor<ObjectState> {
     if (this.state.hasValue()) {
       let val:any = this.state.getValue()
       let fromDateRangeFilter = this.fieldContext.wrapFilter(DateRangeQuery(this.options.fromDateField,{
-        lte: +val.toDate
+        lte: moment(val.toDate).unix()
       }))
       let toDateRangeFilter = this.fieldContext.wrapFilter(DateRangeQuery(this.options.toDateField,{
-        gte: +val.fromDate
+        gte: moment(val.fromDate).unix()
       }))
       const fromVal = this.rangeFormatter(val.fromDate);
       const toVal = this.rangeFormatter(val.toDate);
